@@ -136,7 +136,7 @@
   <div id="chat-box">
     <div id="chat-header">
       <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="bot.png" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+        <img src="logo.png" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
         <span style="font-weight: bold;">Uthiran</span>
       </div>
       
