@@ -87,10 +87,14 @@
 
     #chat-controls {
       display: flex;
+      align-items: center;
+      padding: 10px;
       border-top: 1px solid #ccc;
+      gap: 10px;
     }
 
     #chat-input {
+      flex: 1;
       border-radius: 20px;
       padding: 10px;
       background: #e6f0ff;
@@ -101,7 +105,7 @@
     }
 
     #chat-box button {
-      background: #007bff;
+      background: #004080;
       color: white;
       border: none;
       border-radius: 20px;
@@ -109,6 +113,7 @@
       margin: 5px;
       font-weight: bold;
       cursor: pointer;
+      white-space: nowrap
     }
 
     #close-chat {
