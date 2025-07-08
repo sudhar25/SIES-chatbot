@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>SIES FAQ Chatbot</title>
+  <title>FAQ Chatbot</title>
   <style>
     #chat-widget {
       position: fixed;
@@ -24,7 +24,8 @@
     }
 
     #chat-box {
-      width: 320px;
+      width: 10cm;
+      height: 15cm;
       background: #fff;
       border: 1px solid #ccc;
       margin-top: 10px;
@@ -46,7 +47,7 @@
     }
 
     #chat-body {
-      height: 200px;
+      height: 500px;
       overflow-y: auto;
       padding: 10px;
       font-size: 14px;
@@ -75,10 +76,14 @@
       border-radius: 16px 16px 16px 0;
     }
 
+    
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% { opacity: 0; transform: translateY(15px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
+
+      to { opacity: 1; transform: translateY(0); }
+    
 
     #chat-controls {
       display: flex;
@@ -86,18 +91,23 @@
     }
 
     #chat-input {
-      width: 65%;
-      border: none;
-      padding: 8px;
+      border-radius: 20px;
+      padding: 10px;
+      background: #e6f0ff;
+      margin: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
       outline: none;
     }
 
     #chat-box button {
-      width: 35%;
-      background-color: rgb(75, 31, 251);
+      background: #007bff;
       color: white;
       border: none;
-      padding: 8px;
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin: 5px;
+      font-weight: bold;
       cursor: pointer;
     }
 
@@ -105,14 +115,26 @@
       cursor: pointer;
       font-weight: bold;
     }
-  </style>
+  
+    @media (max-width: 600px) {
+      #chat-box {
+        width: 95%;
+        height: 70vh;
+      }
+    }
+
+</style>
 </head>
 <body>
 <div id="chat-widget">
   <div id="chat-toggle" onclick="toggleChat()">Ask your queries</div>
   <div id="chat-box">
     <div id="chat-header">
-      SIES FAQ Chatbot
+      <div style="display: flex; align-items: center; gap: 10px;">
+        <img src="bot.png" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+        <span style="font-weight: bold;">Uthiran</span>
+      </div>
+      
       <span id="close-chat" onclick="toggleChat()">×</span>
     </div>
     <div id="chat-body"></div>
@@ -127,6 +149,12 @@
   function toggleChat() {
     const box = document.getElementById('chat-box');
     box.style.display = box.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  
+  function quickAsk(message) {
+    document.getElementById("chat-input").value = message;
+    handleUserInput();
   }
 
   function handleUserInput() {
