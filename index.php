@@ -13,7 +13,7 @@
     }
 
     #chat-toggle {
-      background-color: #004080;
+      background-color: #ff6600; 
       color: white;
       padding: 10px 15px;
       border-radius: 50px;
@@ -36,7 +36,7 @@
     }
 
     #chat-header {
-      background-color: #004080;
+      background-color: #ff6600; 
       color: white;
       padding: 10px;
       border-radius: 10px 10px 0 0;
@@ -68,22 +68,20 @@
       align-self: flex-end;
       background-color: #cce5ff;
       border-radius: 16px 16px 0 16px;
+      line-height: 1.6;
     }
 
     .bot-msg {
       align-self: flex-start;
       background-color: #e0e0e0;
       border-radius: 16px 16px 16px 0;
+      line-height: 1.6;
     }
 
-    
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(15px) scale(0.95); }
       100% { opacity: 1; transform: translateY(0) scale(1); }
     }
-
-      to { opacity: 1; transform: translateY(0); }
-    
 
     #chat-controls {
       display: flex;
@@ -105,7 +103,7 @@
     }
 
     #chat-box button {
-      background: #004080;
+      background: #ff6600; 
       color: white;
       border: none;
       border-radius: 20px;
@@ -113,21 +111,20 @@
       margin: 5px;
       font-weight: bold;
       cursor: pointer;
-      white-space: nowrap
+      white-space: nowrap;
     }
 
     #close-chat {
       cursor: pointer;
       font-weight: bold;
     }
-  
+
     @media (max-width: 600px) {
       #chat-box {
         width: 95%;
         height: 70vh;
       }
     }
-
 </style>
 </head>
 <body>
@@ -139,7 +136,6 @@
         <img src="logo.png" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
         <span style="font-weight: bold;">Uthiran</span>
       </div>
-      
       <span id="close-chat" onclick="toggleChat()">×</span>
     </div>
     <div id="chat-body"></div>
@@ -156,7 +152,6 @@
     box.style.display = box.style.display === 'none' ? 'flex' : 'none';
   }
 
-  
   function quickAsk(message) {
     document.getElementById("chat-input").value = message;
     handleUserInput();
@@ -188,17 +183,16 @@
     const chatBody = document.getElementById("chat-body");
     const bubble = document.createElement("div");
     bubble.className = className;
-    bubble.textContent = text;
+    bubble.innerHTML = text;
     chatBody.appendChild(bubble);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    
-  document.getElementById("chat-input").addEventListener("keypress", function (e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleUserInput();
-    }
-  });
+    document.getElementById("chat-input").addEventListener("keypress", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        handleUserInput();
+      }
+    });
   }
 </script>
 </body>

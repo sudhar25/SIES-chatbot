@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   }
 
   // Return best or fallback
-  if ($best_score >= 50) {
-    echo $faq[$best_question];
+  if ($best_score >= 30) {
+    echo html_entity_decode($faq[$best_question]);
   } else if ($fallback_answer) {
-    echo $fallback_answer;
+    echo html_entity_decode($fallback_answer); 
   } else {
     echo "Sorry, I couldn't find an answer to that because it is not properly phrased. Please try rephrasing your question.";
   }
