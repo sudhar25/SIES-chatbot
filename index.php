@@ -158,6 +158,14 @@
     bubble.textContent = text;
     chatBody.appendChild(bubble);
     chatBody.scrollTop = chatBody.scrollHeight;
+
+    
+  document.getElementById("chat-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserInput();
+    }
+  });
   }
 </script>
 </body>
