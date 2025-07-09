@@ -13,15 +13,25 @@
     }
 
     #chat-toggle {
-      background-color: #ff6600; 
-      color: white;
-      padding: 10px 15px;
-      border-radius: 50px;
-      cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-      font-weight: bold;
-      transition: background-color 0.3s;
-    }
+  background-color: #ff6600;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  font-weight: bold;
+  transition: background-color 0.3s;
+  display: flex; 
+  align-items: center; 
+  gap: 20px; 
+}
+
+ .chat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; 
+  object-fit: cover;
+}
 
     #chat-box {
       width: 10cm;
@@ -33,6 +43,8 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.25);
       display: none;
       flex-direction: column;
+      backdrop-filter: blur(8px);
+      background: rgba(255, 255, 255, 0.85);
     }
 
     #chat-header {
@@ -115,21 +127,101 @@
     }
 
     #close-chat {
-      cursor: pointer;
-      font-weight: bold;
-    }
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px; /* Increase text size */
+  padding: 6px 12px; /* Add padding for clickable area */
+  background-color: #ffffff;
+  color: #ff6600;
+  border-radius: 50%;
+  border: 2px solid #ff6600;
+  transition: all 0.3s ease;
+}
+
+  #close-chat:hover {
+  background-color: #ff6600;
+  color: white;
+  transform: scale(1.1);
+}
+
+
+    #chat-toggle:hover {
+    background-color:rgb(191, 94, 24);
+    transform: scale(1.05);
+  }
+
+
+    .typing-indicator {
+  display: inline-flex;
+  gap: 4px;
+  padding: 10px 14px;
+  background-color:  #e0e0e0;
+  border-radius: 16px 16px 16px 0;
+  align-self: flex-start;
+}
+
+   .typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: #888;
+  border-radius: 50%;
+  animation: blink 1.2s infinite ease-in-out;
+}
+
+    .typing-indicator span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+    .typing-indicator span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+    @keyframes blink {
+  0%, 80%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+    @keyframes slideUp {
+  from { transform: translateY(50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+#chat-box {
+  animation: slideUp 0.4s ease-out;
+}
+
 
     @media (max-width: 600px) {
-      #chat-box {
-        width: 95%;
-        height: 70vh;
-      }
-    }
+  #chat-toggle {
+    font-size: 14px;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  #chat-input {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .chat-icon {
+    width: 30px;
+    height: 30px;
+  }
+}
 </style>
 </head>
 <body>
 <div id="chat-widget">
-  <div id="chat-toggle" onclick="toggleChat()">Ask your queries</div>
+  <div id="chat-toggle" onclick="toggleChat()">
+    <img src="bot.png" alt="Chat Icon" class="chat-icon">
+    Ask your queries
+  </div>
   <div id="chat-box">
     <div id="chat-header">
       <div style="display: flex; align-items: center; gap: 10px;">
@@ -158,26 +250,41 @@
   }
 
   function handleUserInput() {
-    const input = document.getElementById('chat-input');
-    const userText = input.value.trim();
-    if (!userText) return;
+  const input = document.getElementById('chat-input');
+  const userText = input.value.trim();
+  if (!userText) return;
 
-    addMessage("You: " + userText, 'user-msg');
-    input.value = '';
+  addMessage("You: " + userText, 'user-msg');
+  input.value = '';
 
-    fetch("chatbot.php", {
+  // Show typing indicator
+  const chatBody = document.getElementById("chat-body");
+  const typingIndicator = document.createElement("div");
+  typingIndicator.className = "bot-msg typing-indicator";
+  typingIndicator.innerHTML = '<span></span><span></span><span></span>';
+  chatBody.appendChild(typingIndicator);
+  chatBody.scrollTop = chatBody.scrollHeight;
+
+  setTimeout(() => {
+   fetch("chatbot.php", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: "message=" + encodeURIComponent(userText)
     })
     .then(res => res.text())
     .then(reply => {
+      chatBody.removeChild(typingIndicator);
       addMessage("Bot: " + reply, 'bot-msg');
     })
     .catch(() => {
+      chatBody.removeChild(typingIndicator);
       addMessage("Bot: Something went wrong. Please try again.", 'bot-msg');
     });
-  }
+  }, 800);
+
+}
+
+
 
   function addMessage(text, className) {
     const chatBody = document.getElementById("chat-body");
@@ -186,14 +293,14 @@
     bubble.innerHTML = text;
     chatBody.appendChild(bubble);
     chatBody.scrollTop = chatBody.scrollHeight;
-
-    document.getElementById("chat-input").addEventListener("keypress", function (e) {
-      if (e.key === "Enter") {
-        e.preventDefault();
-        handleUserInput();
-      }
-    });
   }
+  document.getElementById("chat-input").addEventListener("keypress", function (e) {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleUserInput();
+    }
+  });
+  
 </script>
 </body>
 </html>
