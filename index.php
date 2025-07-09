@@ -302,5 +302,30 @@
   });
   
 </script>
+<script>
+  let chatOpened = false;
+
+  function toggleChat() {
+    const chatBox = document.getElementById('chat-box');
+    const chatBody = document.getElementById('chat-body');
+
+    if (chatBox.style.display === 'none' || chatBox.style.display === '') {
+      chatBox.style.display = 'flex';
+
+      // Show welcome message only once
+      if (!chatOpened) {
+        const botMsg = document.createElement('div');
+        botMsg.className = 'bot-msg';
+        botMsg.textContent = 'Hi I am chatbot Uthiran. I am here to help you with your queries related to SIES Graduate School of Technology.';
+        chatBody.appendChild(botMsg);
+        chatBody.scrollTop = chatBody.scrollHeight;
+        chatOpened = true;
+      }
+
+    } else {
+      chatBox.style.display = 'none';
+    }
+  }
+</script>
 </body>
 </html>
