@@ -13,7 +13,7 @@
     }
 
     #chat-toggle {
-  background-color: #ff6600;
+  background-color: #1aa3a3;
   color: white;
   padding: 10px 15px;
   border-radius: 50px;
@@ -48,7 +48,7 @@
     }
 
     #chat-header {
-      background-color: #ff6600; 
+      background-color: #1aa3a3; 
       color: white;
       padding: 10px;
       border-radius: 10px 10px 0 0;
@@ -115,7 +115,7 @@
     }
 
     #chat-box button {
-      background: #ff6600; 
+      background: #1aa3a3; 
       color: white;
       border: none;
       border-radius: 20px;
@@ -129,24 +129,24 @@
     #close-chat {
   cursor: pointer;
   font-weight: bold;
-  font-size: 20px; /* Increase text size */
-  padding: 6px 12px; /* Add padding for clickable area */
+  font-size: 20px;
+  padding: 6px 12px;
   background-color: #ffffff;
-  color: #ff6600;
+  color: #1aa3a3;
   border-radius: 50%;
-  border: 2px solid #ff6600;
+  border: 2px solid #1aa3a3;
   transition: all 0.3s ease;
 }
 
   #close-chat:hover {
-  background-color: #ff6600;
+  background-color: #1aa3a3;
   color: white;
   transform: scale(1.1);
 }
 
 
     #chat-toggle:hover {
-    background-color:rgb(191, 94, 24);
+    background-color:#1aa3a3;
     transform: scale(1.05);
   }
 
@@ -197,7 +197,7 @@
 }
 
 
-    @media (max-width: 600px) {
+  @media (max-width: 600px) {
   #chat-toggle {
     font-size: 14px;
     padding: 8px 12px;
