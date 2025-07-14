@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>FAQ Chatbot</title>
+  <title>GST Bot</title>
   <style>
     #chat-widget {
       position: fixed;
@@ -59,7 +59,7 @@
     }
 
     #chat-body {
-      height: 500px;
+      height: 600px;
       overflow-y: auto;
       padding: 10px;
       font-size: 14px;
@@ -225,8 +225,8 @@
   <div id="chat-box">
     <div id="chat-header">
       <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="logo.png" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
-        <span style="font-weight: bold;">Uthiran</span>
+        <img src="sies.jpg" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+        <span style="font-weight: bold;">GST Chatbot</span>
       </div>
       <span id="close-chat" onclick="toggleChat()">×</span>
     </div>
@@ -257,7 +257,7 @@
   addMessage("You: " + userText, 'user-msg');
   input.value = '';
 
-  // Show typing indicator
+  
   const chatBody = document.getElementById("chat-body");
   const typingIndicator = document.createElement("div");
   typingIndicator.className = "bot-msg typing-indicator";
@@ -274,11 +274,11 @@
     .then(res => res.text())
     .then(reply => {
       chatBody.removeChild(typingIndicator);
-      addMessage("Bot: " + reply, 'bot-msg');
+      addMessage("GST: " + reply, 'bot-msg');
     })
     .catch(() => {
       chatBody.removeChild(typingIndicator);
-      addMessage("Bot: Something went wrong. Please try again.", 'bot-msg');
+      addMessage("GST: Something went wrong. Please try again.", 'bot-msg');
     });
   }, 800);
 
@@ -312,11 +312,11 @@
     if (chatBox.style.display === 'none' || chatBox.style.display === '') {
       chatBox.style.display = 'flex';
 
-      // Show welcome message only once
+      
       if (!chatOpened) {
         const botMsg = document.createElement('div');
         botMsg.className = 'bot-msg';
-        botMsg.textContent = 'Hi I am chatbot Uthiran. I am here to help you with your queries related to SIES Graduate School of Technology.';
+        botMsg.textContent = 'Hi I am GST Bot. I am here to help you with your queries related to SIES Graduate School of Technology.';
         chatBody.appendChild(botMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
         chatOpened = true;
