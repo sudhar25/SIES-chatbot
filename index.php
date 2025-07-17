@@ -74,6 +74,7 @@
       max-width: 80%;
       border-radius: 16px;
       animation: fadeIn 0.3s ease-in;
+      text-align: justify;
     }
 
     .user-msg {
@@ -81,6 +82,7 @@
       background-color: #cce5ff;
       border-radius: 16px 16px 0 16px;
       line-height: 1.6;
+      text-align: justify;
     }
 
     .bot-msg {
@@ -88,6 +90,7 @@
       background-color: #e0e0e0;
       border-radius: 16px 16px 16px 0;
       line-height: 1.6;
+      text-align: justify;
     }
 
     @keyframes fadeIn {
@@ -316,7 +319,7 @@
       if (!chatOpened) {
         const botMsg = document.createElement('div');
         botMsg.className = 'bot-msg';
-        botMsg.textContent = 'Hi I am GST Bot. I am here to help you with your queries related to SIES Graduate School of Technology.';
+        botMsg.textContent = 'GST: Hi I am GST Bot. I am here to help you with your queries related to SIES Graduate School of Technology.';
         chatBody.appendChild(botMsg);
         chatBody.scrollTop = chatBody.scrollHeight;
         chatOpened = true;
