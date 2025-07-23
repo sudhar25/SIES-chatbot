@@ -222,13 +222,13 @@
 <body>
 <div id="chat-widget">
   <div id="chat-toggle" onclick="toggleChat()">
-    <img src="bot.png" alt="Chat Icon" class="chat-icon">
-    Ask your queries
+    <img src="/SIES-chatbot/bot.png" alt="Chat Icon" class="chat-icon">
+    Ask your queries 
   </div>
   <div id="chat-box">
     <div id="chat-header">
       <div style="display: flex; align-items: center; gap: 10px;">
-        <img src="sies.jpg" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
+        <img src="/SIES-chatbot/sies.jpg" alt="Bot Logo" style="width:30px; height:30px; border-radius:50%; object-fit:cover;">
         <span style="font-weight: bold;">GST Chatbot</span>
       </div>
       <span id="close-chat" onclick="toggleChat()">×</span>

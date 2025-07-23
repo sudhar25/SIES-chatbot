@@ -2,3 +2,4 @@
   <p>© 2025 SIES College. All rights reserved.</p>
   <?php include 'chatbot_UI.php'; ?>
 </footer>
+
