@@ -269,7 +269,7 @@
   chatBody.scrollTop = chatBody.scrollHeight;
 
   setTimeout(() => {
-   fetch("chatbot.php", {
+   fetch("/SIES-chatbot/chatbot.php", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: "message=" + encodeURIComponent(userText)

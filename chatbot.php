@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  $faq = json_decode(file_get_contents('/SIES-chatbot/faq.json'), true);
+  $faq = json_decode(file_get_contents(__DIR__ . '/faq.json'), true);
   $user_input = strtolower(trim($_POST['message']));
   $best_question = "";
   $best_score = 0;
